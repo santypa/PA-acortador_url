@@ -29,15 +29,19 @@
 
 
          {% if val==1 %}
-        <form action="{{url_for('acortarPos')}}" method="post">
+        <form action="{{url_for('acortarU')}}" method="post">
             <input type="url" name="nurl" id="nurl" placeholder="https://example.com" pattern="https://.*" size="50"required>
             <br>
             <input type="hidden" value="{{forms['id']}}" name="id" id="id">
             <input type="submit" value="VOLVER" id="bt2" class="btn btn-primary">
         </form>
         {% endif %}
+
+
+
         este es el link:
-        {{forms['forma']}}
+        <input type="text" value="{{forms['forma']}}">
+   
 
 
     </div>

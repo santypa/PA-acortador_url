@@ -19,14 +19,19 @@ db.autocommit = True
 
 @app.get("/")
 def acortar():
-    cursor = db.cursor(dictionary=True)
-    cursor.execute("select * from urls")
-    forms = cursor.fetchall()
+    cursor= db.cursor(buffered=True)
+    # cursor = db.cursor(dictionary=True)
+    cursor.execute("select * from urls ")
+    forms = cursor.fetchone()
+    # resultado=cursor.fetchone()
+    # print (resultado)
+    
     if forms == None:
         val = 0
     else:
         val = 1
     cursor.close()
+    
     return render_template("inicio.html", forms=forms, val=val)
 
 
@@ -46,8 +51,9 @@ def acortarPost():
 
     cursor.close()
     print("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb")
-    
+
     return redirect(url_for("acortar"))
+
 
 # @app.delete("/")
 # def acortarPos():
@@ -57,7 +63,7 @@ def acortarPost():
 #     shrt = pyshorteners.Shortener()
 #     forma = shrt.tinyurl.short(url)
 #     cursor = db.cursor()
-    
+
 #     cursor.execute("INSERT INTO urls(puerto,forma) VALUES (%s,%s)", (
 #         puerto,
 #         forma
@@ -65,21 +71,19 @@ def acortarPost():
 #     cursor.close()
 #     print("ccccccccccccccccccccccccccccccccccccccccccccccccccccccccc")
 #     return redirect(url_for("acortar"))
-      
 
 
-#@app.delete("/")
-#def acortarDel():
-   # id = request.form.get('id')
-   # val = id
-   # cursor = db.cursor()
-   # cursor.execute("DELETE FROM acortadores. urls WHERE (id=%s)", (
-   #     id,
-   # ))
+@app.post("/")
+def acortarU():
+    id = request.form.get('id')
     
-    #cursor.close
-    #print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-    #return render_template("ini.html", val=val)
+    cursor = db.cursor()
+    cursor.execute("DELETE FROM urls WHERE (id=%s)", (
+        id,
+    ))
+    cursor.close
+    print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+    return render_template("ini.html", val=val)
 
 
 app.run(debug=True)
