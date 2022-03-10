@@ -18,14 +18,14 @@
 
         <form action="{{url_for('acortarPost')}}" method="post">
 
-            <label for="">  Link HTTP : </label>
+            <b><label for="">  ACORTAR LINK HTTP : </label></b>
             <input type="url" name="nurl" id="nurl" placeholder="https://example.com" pattern="https://.*" size="50"required>
             <br>
             <input type="submit" value="GENERAR" id="bt1" class="btn btn-primary">
         </form>
 
         {% if val==1 %}
-        Este es el link: <BR>       
+       <b> URL ACORTADA, LINK CORTO: </b><BR>       
         <input type="text" value="{{forms[2]}}">
         
         {% endif %}
