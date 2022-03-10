@@ -16,24 +16,23 @@ db = mysql.connector.connect(
 )
 db.autocommit = True
 
-
 @app.get("/")
 def acortar():
-    cursor= db.cursor(buffered=True)
+    cursor = db.cursor(buffered=True)
     # cursor = db.cursor(dictionary=True)
-    cursor.execute("select * from urls ")
+    cursor.execute("SELECT * FROM  urls ORDER BY id DESC")
     forms = cursor.fetchone()
     # resultado=cursor.fetchone()
     # print (resultado)
-    
+
     if forms == None:
         val = 0
+        val2 = 0
     else:
         val = 1
+        val2 = forms[0]
     cursor.close()
-    
-    return render_template("inicio.html", forms=forms, val=val)
-
+    return render_template("inicio.html", forms=forms, val=val, val2=val2)
 
 @app.post("/")
 def acortarPost():
@@ -50,40 +49,6 @@ def acortarPost():
     ))
 
     cursor.close()
-    print("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb")
-
     return redirect(url_for("acortar"))
-
-
-# @app.delete("/")
-# def acortarPos():
-#     puerto = request.form.get('nurl')
-#     #id= request.form.get('id')
-#     url = puerto
-#     shrt = pyshorteners.Shortener()
-#     forma = shrt.tinyurl.short(url)
-#     cursor = db.cursor()
-
-#     cursor.execute("INSERT INTO urls(puerto,forma) VALUES (%s,%s)", (
-#         puerto,
-#         forma
-#     ))
-#     cursor.close()
-#     print("ccccccccccccccccccccccccccccccccccccccccccccccccccccccccc")
-#     return redirect(url_for("acortar"))
-
-
-@app.post("/")
-def acortarU():
-    id = request.form.get('id')
-    
-    cursor = db.cursor()
-    cursor.execute("DELETE FROM urls WHERE (id=%s)", (
-        id,
-    ))
-    cursor.close
-    print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-    return render_template("ini.html", val=val)
-
 
 app.run(debug=True)
