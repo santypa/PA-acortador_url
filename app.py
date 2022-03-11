@@ -76,4 +76,4 @@ def cortarRoute(url):
     #   url = forms[2]
     # cursor.execute("SELECT puerto FROM urls WHERE forma = %s",(url))
 
-app.run(debug=True)
+# app.run(debug=True)
