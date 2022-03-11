@@ -19,10 +19,10 @@ app = Flask(__name__)
 # usuario :  p4
 # ALrUBIaLYcHR
 db = mysql.connector.connect(
-    host='localhost',
-    user="root",
-    password="",
-    database="acortadores",
+    host='academia.c1mebdhdxytu.us-east-1.rds.amazonaws.com',
+    user="p4",
+    password="ALrUBIaLYcHR",
+    database="p4",
     port="3306"
 )
 db.autocommit = True
