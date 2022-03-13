@@ -14,42 +14,29 @@
 </head>
 
 <body>
-    <div class="container" style="padding-left: 100px;" >
-        <center>
+ 
+                <h1>
+                    BIENVENIDO A ACORTAR LINK
+                </h1>
+                
 
-            <h1>
-                BIENVENIDO A ACORTAR LINK
-            </h1>
-            <div style="position: absolute;" class="fondo">
+                    <form action="{{url_for('acortarPost')}}" method="post">
 
-                <form action="{{url_for('acortarPost')}}" method="post">
+                        <b><label for=""> ACORTAR LINK HTTP : </label></b>
+                        <input type="url" name="nurl" id="nurl" placeholder="https://example.com" pattern="https://.*"
+                            size="50" required>
+                        <br>
+                        <input type="submit" value="GENERAR" id="bt1" class="btn btn-primary">
+                    </form>
 
-                    <b><label for=""> ACORTAR LINK HTTP : </label></b>
-                    <input type="url" name="nurl" id="nurl" placeholder="https://example.com" pattern="https://.*"
-                        size="50" required>
+                    {% if val==1 %}
                     <br>
-                    <input type="submit" value="GENERAR" id="bt1" class="btn btn-primary">
-                </form>
-
-                {% if val==1 %}
-                <br>
-                <div style="padding-left: 20px;">
-                   URL ACORTADA, LINK CORTO:
-                   <a href="{{forms[2]}}" >{{forms[2]}}</a>
-                    <!-- <input type="text" value="{{forms[2]}}"> -->
-                </div>
-                {% endif %}
-            </div>
-
-        </center>
-    </div>
+                    
+                        URL ACORTADA, LINK CORTO:
+                        <a href="{{forms[2]}}">{{forms[2]}}</a>
+                   
+                    {% endif %}
 
 </body>
 
 </html>
-
-<style>
-    body {
-        background: rgb(235, 229, 229)
-    }
-</style>

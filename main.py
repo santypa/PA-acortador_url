@@ -1,4 +1,4 @@
-import re
+
 from sqlite3 import Cursor
 from flask import Flask, render_template, request, redirect, url_for
 
@@ -8,21 +8,23 @@ import pyshorteners
 import string
 import random
 
-
-
-
-
-
 app = Flask(__name__)
 
 # academia.c1mebdhdxytu.us-east-1.rds.amazonaws.com
 # usuario :  p4
 # ALrUBIaLYcHR
+# db = mysql.connector.connect(
+#     host='academia.c1mebdhdxytu.us-east-1.rds.amazonaws.com',
+#     user="p4",
+#     password="ALrUBIaLYcHR",
+#     database="p4",
+#     port="3306"
+# )
 db = mysql.connector.connect(
-    host='academia.c1mebdhdxytu.us-east-1.rds.amazonaws.com',
-    user="p4",
-    password="ALrUBIaLYcHR",
-    database="p4",
+    host='127.0.0.1',
+    user="root",
+    password="",
+    database="acortadores",
     port="3306"
 )
 db.autocommit = True
@@ -76,4 +78,4 @@ def cortarRoute(url):
     #   url = forms[2]
     # cursor.execute("SELECT puerto FROM urls WHERE forma = %s",(url))
 
-# app.run(debug=True)
+app.run(debug=True)
