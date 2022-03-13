@@ -17,7 +17,7 @@
 
     <nav class="navbar navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="inicio.html">
+            <a class="fw-bolder navbar-brand" href="inicio.html">
                 <img src="/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24"
                     class="d-inline-block align-text-top">
                 ACORTADOR
@@ -30,6 +30,7 @@
         <div class="row">
             <div class="col"></div>
             <div class="col-8">
+                <center>
                 <h1 class="fw-bolder">
                     BIENVENIDO A ACORTAR LINK
                 </h1>
@@ -56,18 +57,18 @@
                     </symbol>
                 </svg>
 
-                <div class="col 6 alert alert-success d-flex align-items-center" role="alert" >
+                <div class="col-6 alert alert-success d-flex align-items-center" role="alert" >
                     <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:">
-                        <use xlink:href="#check-circle-fill" />
+                        <use xlink:href="#check-circle-fill" /> 
                     </svg>
                     <div class="row fw-bolder">
-                         URL ACORTADA, LINK CORTO: 
+                         <p>URL ACORTADA, LINK CORTO: </p> 
                         <a href="{{forms[2]}}">{{forms[2]}}</a>
                     </div>
                 </div>
 
                 {% endif %}
-
+            </center>
             </div><div class="col"></div>
 
         </div>
